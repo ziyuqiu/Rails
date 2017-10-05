@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CourseCatalogs</title>
+		<!-- for nav bar -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+
+
+    <%= csrf_meta_tags %>
+    <!-- for footer -->
+    <%= stylesheet_link_tag    'application', media: 'all','data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- footer finished -->
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Course Catalog</h1> 
+
+		</div>
+	</div>
+
+	<div class="container">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="/">Home</a></li>
+			<li><%= link_to "Instructors", 'instructors' %></li>
+			<li><%= link_to "Subjects", 'subjects' %></li>
+			<li><%= link_to "Courses", 'courses' %></li>
+		</ul>
+	</div>
+
+  </head>
+
+  <body> 
+
+      <%= yield %>
+  </body>
+
+  <footer class="footer">
+	  <small>
+	    This is a footer.
+	  </small>
+  </footer>
+</html>
