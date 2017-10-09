@@ -28,7 +28,7 @@
   <Strong>User: </Strong> 
   <%= u.name %> <br/>
   <Strong>Enrolled Classes: </Strong> 
-  <%= u.registrations.each do |r| %>
+  <% u.registrations.each do |r| %>
     </br>
     <%= Course.find(r.course_id).code  %>
     <%= Course.find(r.course_id).name  %>
