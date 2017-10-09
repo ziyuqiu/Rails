@@ -3,12 +3,12 @@
   <head>
     <title>CourseCatalogs</title>
 		<!-- for nav bar -->
-		<meta charset="utf-8">
+<!-- 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		
+	 -->	
 
 
     <%= csrf_meta_tags %>
@@ -23,7 +23,13 @@
 	<div class="container">
 		<div class="jumbotron">
 			<h1><%= image_tag("logo.png", :alt => "img missing", :size => "150") %> Course Catalog</h1>
-
+			</br>
+			<div class="progress">
+			  <div class="progress-bar progress-bar-striped active" role="progressbar"
+			  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+			    Website under construction...        (40%)
+			  </div>
+			</div>
 		</div>
 	</div>
 
@@ -33,10 +39,8 @@
 			<li><%= link_to "Instructors", 'instructors' %></li>
 			<li><%= link_to "Subjects", 'subjects' %></li>
 			<li><%= link_to "Courses", 'courses' %></li>
-
-			<li><%= link_to "Users", 'users' %></li>
-
-			<li><%= link_to "Registrations", 'registrations' %></li>
+			<li><%= link_to "Registrations", 'users' %></li>
+<!--		<li><%= link_to "Registrations", 'registrations' %></li> -->
 		</ul>
 	</div>
 

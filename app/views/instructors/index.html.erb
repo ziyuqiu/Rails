@@ -2,6 +2,11 @@
 
 <h1>Instructors</h1>
 
+</br>
+<%= page_entries_info @instructors %> </br>
+<%= will_paginate @instructors, :container => false %> </br>
+</br>
+
 <table class = "table table-striped">
   <thead>
     <tr>
@@ -9,7 +14,7 @@
       <th>First</th>
       <th>Last</th>
       <th>Email</th>
-      <th colspan="3"></th>
+      <!-- <th colspan="3"></th> -->
     </tr>
   </thead>
 
@@ -20,9 +25,9 @@
         <td><%= instructor.first %></td>
         <td><%= instructor.last %></td>
         <td><%= instructor.email %></td>
-        <td><%= link_to 'Show', instructor %></td>
+        <!-- <td><%= link_to 'Show', instructor %></td>
         <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
-        <td><%= link_to 'Destroy', instructor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', instructor, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +35,7 @@
 
 <br>
 
-<%= link_to 'New Instructor', new_instructor_path %>
+
+<button type="button" class="btn btn-default" data-toggle="button" aria-pressed="false" autocomplete="off">
+  <%= link_to 'New Instructor', new_instructor_path %>
+</button>

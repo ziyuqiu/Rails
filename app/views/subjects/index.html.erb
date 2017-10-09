@@ -1,14 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Subjects</h1>
-
+</br>
+<%= page_entries_info @subjectsub %> </br>
+<%= will_paginate @subjects, :container => false %> </br>
+</br>
 <table class = "table">
   <thead>
     <tr>
       <th>ID</th>
       <th>Name</th>
       <th>Abbreviation</th>
-      <th colspan="3"></th>
+     <!--  <th colspan="3"></th> -->
     </tr>
   </thead>
 
@@ -18,9 +21,9 @@
         <td><%= subject.id %></td>
         <td><%= subject.name %></td>
         <td><%= subject.abbreviation %></td>
-        <td><%= link_to 'Show', subject %></td>
+        <!-- <td><%= link_to 'Show', subject %></td>
         <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
-        <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +31,8 @@
 
 <br>
 
-<%= link_to 'New Subject', new_subject_path %>
+
+<button type="button" class="btn btn-default" data-toggle="button" aria-pressed="false" autocomplete="off">
+  <%= link_to 'New Subject', new_subject_path %>
+</button>
+

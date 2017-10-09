@@ -1,12 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
+<h1>Registration</h1>
 
-<table>
+<table class = "table table-striped">
   <thead>
     <tr>
       <th>Name</th>
       <th>Email</th>
+      <!-- <th></th> -->
+      <th>Enrolled</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +18,12 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
+        <td><% user.registrations.each do |r| %>
+          <%= Course.find(r.course_id).code  %>
+          <%= Course.find(r.course_id).name  %>
+          </br>
+        <% end %></td>
+
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -24,7 +32,7 @@
   </tbody>
 </table>
 
-<% @users.each do |u| %>
+<!-- <% @users.each do |u| %>
   <Strong>User: </Strong> 
   <%= u.name %> <br/>
   <Strong>Enrolled Classes: </Strong> 
@@ -34,9 +42,6 @@
     <%= Course.find(r.course_id).name  %>
   <% end %>
   <h1></h1>
-<% end %>
+<% end %> -->
 
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
+<button type="button" class="btn btn-default"><%= link_to 'New User', new_user_path %></button>
