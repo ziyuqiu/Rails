@@ -1,2 +1,10 @@
-<%= image_tag("logo.png", :alt => "img missing", :size => "100") %>
-<!-- <img class="img-responsive" src="/Users/Andrea/Desktop/Brandeis_logo.png" alt="img missing"> -->
+<!-- <h1>User registered</h1>
+<% @users.each do |u| %>
+	<Strong>User: </Strong> 
+	<%= u.name %> 
+	is enrolled in: 
+	<%= User.find(1).registrations.each do |r| %>
+		<% Course.find(r.course_id).name  %>
+	<% end %> 
+<% end %>
+ -->

@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-course_file = File.read("/Users/Andrea/Dropbox/cosi166b_ziyuqiu/RailsWorkspace/Course_Catalogs/Course_Data/course.json")
+course_file = File.read("./data/course.json")
 course_list = JSON.parse(course_file)
 if (Course.count==0)
   course_list.each do |x|
@@ -31,4 +31,12 @@ if (Subject.count==0)
     print(x)
     Subject.create({:name=>x["name"], :abbreviation=>x["abbreviation"]})
   end
+end
+
+10.times do
+  User.create(name: Faker::Name.name, email: Faker::Internet.email)
+end
+
+20.times do
+  r = Registration.create(user_id: User.all.sample.id, course_id: Course.all.sample.id)
 end
