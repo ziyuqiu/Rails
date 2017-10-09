@@ -1,5 +1,27 @@
-<h1>New User</h1>
+<% provide(:title, 'Sign up') %>
 
-<%= render 'form', user: @user %>
+<h1>Sign up</h1>
 
-<%= link_to 'Back', users_path %>
+<form class="form-inline">
+	<div class="form-group">
+    <label for="email">Name:</label>
+    <input type="email" class="form-control" id="name">
+  </div></br>
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" class="form-control" id="email">
+  </div></br>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd">
+  </div></br>
+  <div class="checkbox">
+    <label><input type="checkbox"> Remember me</label>
+  </div></br>
+  <button type="submit" class="btn btn-default">Submit</button></br>
+  <button type="submit" class="btn btn-link"><%= link_to 'Back', users_path %></button>
+</form>
+
+<!--<%= render 'form', user: @user %>-->
+
+
