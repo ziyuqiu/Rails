@@ -7,5 +7,6 @@
 ## For PA Rails1:
 * **Home page:** https://course-catalog-ziyuqiu.herokuapp.com/
 	(Please disregard the signin button since it is not actually doing anything)
+* **Table of Instructors:** https://course-catalog-ziyuqiu.herokuapp.com/instructors
 * **Table of Subjects:** https://course-catalog-ziyuqiu.herokuapp.com/subjects
 * **Table of Courses:** https://course-catalog-ziyuqiu.herokuapp.com/courses
