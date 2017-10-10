@@ -68,4 +68,5 @@ gem 'json'
 gem 'activerecord-import'
 gem "pry-rails"
 gem "will_paginate"
-
+gem "jquery"
+gem "bcrypt"

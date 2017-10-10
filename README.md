@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Link to private GitHub repo: https://github.com/ziyuqiu/Rails
+Link to Heroku: https://course-catalog-ziyuqiu.herokuapp.com/
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+For PA Rails1:
+Home page:https://course-catalog-ziyuqiu.herokuapp.com/
+	(Please disregard the signin button since it is not actually doing anything)
+Table of Instructors: https://course-catalog-ziyuqiu.herokuapp.com/instructors
+Table of Subjects: https://course-catalog-ziyuqiu.herokuapp.com/subjects
+Table of Courses: https://course-catalog-ziyuqiu.herokuapp.com/courses

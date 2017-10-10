@@ -61,6 +61,10 @@ class CoursesController < ApplicationController
     end
   end
 
+  def enroll(uid,cid)
+    Registration.new(:user_id =>uid, :couseid=> cid )
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
@@ -71,4 +75,5 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:name, :description, :code)
     end
+
 end

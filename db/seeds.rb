@@ -34,9 +34,9 @@ if (Subject.count==0)
 end
 
 10.times do
-  User.create(name: Faker::Name.name, email: Faker::Internet.email)
+  User.create(name: Faker::Name.name, email: Faker::Internet.email, password: Faker::Internet.password(10, 20, true))
 end
 
 20.times do
-  r = Registration.create(user_id: User.all.sample.id, course_id: Course.all.sample.id)
+  Registration.create(user_id: User.all.sample.id, course_id: Course.all.sample.id)
 end
