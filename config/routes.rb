@@ -1,16 +1,21 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+  root 'home#index'
 
-  resources :users
-  get    '/signup', to: 'users#new'
+  get 'sessions/new'
+  get  '/signup', to: 'users#new'
+  post '/signup',  to: 'users#create'
+  
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  resources :courses
+  resources :users
+  resources :courses do
+    post :enroll
+  end
   resources :subjects
   resources :instructors
   resources :registrations
-  root 'home#index'
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

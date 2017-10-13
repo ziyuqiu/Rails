@@ -1,6 +1,39 @@
-<h1>Editing User</h1>
+<!-- <h1>Editing User</h1>
 
 <%= render 'form', user: @user %>
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>
+
+<% provide(:title, "Edit user") %> -->
+<center><h1>Update your profile</h1></center>
+
+<div class="row">
+  <div class="col-md-3">
+  	<div class="gravatar_edit">
+	  <%= gravatar_for @user %>
+	  <a href="http://gravatar.com/emails" target="_blank">change</a>
+	</div>
+  </div>
+  <div class="col-md-6">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+  	  </br>
+      <center><%= f.submit "Save changes", class: "btn btn-primary" %></center>
+    <% end %> 
+  </div>
+  <div class="col-md-3">
+  </div>
+</div>

@@ -3,9 +3,8 @@
 <h1>Instructors</h1>
 
 </br>
-<%= page_entries_info @instructors %> </br>
-<%= will_paginate @instructors, :container => false %> </br>
-</br>
+<p class="text-primary"><%= page_entries_info @instructors %> </p>
+<%= will_paginate @instructors %>
 
 <table class = "table table-striped">
   <thead>
@@ -32,6 +31,8 @@
     <% end %>
   </tbody>
 </table>
+
+<%= will_paginate @instructors %> </br>
 
 <br>
 

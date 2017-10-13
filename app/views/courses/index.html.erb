@@ -1,10 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Courses</h1>
-</br>
-<%= page_entries_info @courses %> </br>
-<%= will_paginate @courses, :container => false %> </br>
-</br>
+
+
+<% if @courses.blank? %>
+  <h4>There are no courses containing the term <mark><%= params[:search] %></mark>.</h4>
+<% elsif !params[:search].blank? %>
+  <h4>There are <mark><%= @courses.count %> results that matches <mark><%= params[:search].upcase %></mark>.</h4>
+<% else %>
+  <h4>There are <mark><%= @courses.count %></mark> courses in total. </h4>
+<% end %>
 
 <table class = "table table-bordered table-striped">
   <thead>
@@ -21,16 +26,13 @@
   <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= @a = course.id %></td>
+        <% current_course = course.id %>
+        <td><%= @i %></td>
         <td><%= course.code %></td>
         <td><%= course.name %></td>
         <td><%= course.description %></td>
-        <td><button  class="btn btn-link", action = "courses/enroll">Enroll</button></td>
-        <!-- <%= link_to 'Back', users_path %> -->
-        
-        <!-- <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+
+        <td><%=link_to "Enroll", course_enroll_path(course, user_id: current_user.id), method: :post %></td>
       </tr>
     <% end %>
 

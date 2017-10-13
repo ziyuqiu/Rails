@@ -4,7 +4,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
   def index
-    @registrations = Registration.all.paginate(:page => params[:page], :per_page => 30)
+    @registrations = Registration.all.paginate(:page => params[:page], :per_page => 30).order(:user_id)
   end
 
   # GET /registrations/1
@@ -60,6 +60,11 @@ class RegistrationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def registration_params
+    params.require(:registration).permit(:user_id, :course_id)
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -68,7 +73,5 @@ class RegistrationsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def registration_params
-      params.require(:registration).permit(:user_id, :course_id)
-    end
+    
 end

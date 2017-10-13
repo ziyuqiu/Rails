@@ -66,7 +66,9 @@ gem 'awesome_print'
 gem 'faker'
 gem 'json'
 gem 'activerecord-import'
-gem "pry-rails"
-gem "will_paginate"
-gem "jquery"
-gem "bcrypt"
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+gem 'jquery'
+gem 'jquery-rails'
+gem 'bcrypt'
+gem 'pg_search'

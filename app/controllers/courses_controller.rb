@@ -4,7 +4,18 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all.paginate(:page => params[:page], :per_page => 30)
+    if params[:search]
+      @courses = Course.search(params[:search]).order("created_at DESC")
+      respond_to do |format|
+        format.html # search.html.erb
+        format.json { render json: search_path }
+      end
+    else
+      @courses = Course.all.order("created_at DESC")
+    @courses = @courses.paginate(:page => params[:page], :per_page => 30)
+  end
+
+
   end
 
   # GET /courses/1
@@ -61,8 +72,17 @@ class CoursesController < ApplicationController
     end
   end
 
-  def enroll(uid,cid)
-    Registration.new(:user_id =>uid, :couseid=> cid )
+  def enroll
+    @registration = Registration.create(user_id: params[:user_id], course_id: params[:course_id])
+
+    if @registration.save 
+      flash[:success] = "You have successfully enrolled."
+      redirect_to user_path(current_user)
+    else 
+      flash[:danger] = "Please try again."
+      redirect_to user_path(current_user)
+    end
+    # Registration.create(:user_id =>current_user, :course_id=> @course )
   end
 
   private
@@ -73,7 +93,7 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :description, :code)
+      params.require(:course).permit(:name, :description, :code, :search)
     end
 
 end

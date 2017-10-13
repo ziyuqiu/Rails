@@ -1,12 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Registration</h1>
+<h1>All Registration (<%= User.count %> users)</h1>
 
+<%= will_paginate %>
 <table class = "table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
+      <th>ID</th>
+      <th>Gravatar</th>
+      <th>Info</th>
       <th>Enrolled</th>
       <th colspan="3"></th>
     </tr>
@@ -15,9 +17,14 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><% user.registrations.each do |r| %>
+        <td><%= user.id %></td>
+        <td><img class="img-circle" alt="Cinque Terre" <%= gravatar_for user, size: 50 %></td>
+        <td><strong><%= user.name %></strong></br>
+            <%= user.email %></br>
+            <p class = "text-danger"> Taking <%= user.registrations.count %> courses</p></td>
+        <td>
+          <!-- Database Count: <%= Registration.where(:user_id => user.id).count%> -->
+          <% user.registrations.each do |r| %>
           <%= Course.find(r.course_id).code  %>
           <%= Course.find(r.course_id).name  %>         
           </br>
@@ -30,17 +37,6 @@
     <% end %>
   </tbody>
 </table>
-
-<!-- <% @users.each do |u| %>
-  <Strong>User: </Strong> 
-  <%= u.name %> <br/>
-  <Strong>Enrolled Classes: </Strong> 
-  <% u.registrations.each do |r| %>
-    </br>
-    <%= Course.find(r.course_id).code  %>
-    <%= Course.find(r.course_id).name  %>
-  <% end %>
-  <h1></h1>
-<% end %> -->
+<%= will_paginate %></br>
 
 <button type="button" class="btn btn-default"><%= link_to 'New User', new_user_path %></button>

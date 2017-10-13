@@ -34,9 +34,25 @@ if (Subject.count==0)
 end
 
 10.times do
-  User.create(name: Faker::Name.name, email: Faker::Internet.email, password: Faker::Internet.password(10, 20, true))
-end
+  # User.create(name: Faker::Name.name, email: Faker::Internet.email, password: Faker::Internet.password(10, 20, true))
+  name  = Faker::Name.name
+  email = Faker::Internet.email
+  password = Faker::Internet.password(10, 20, true)
+  User.create!(name:  name,
+               email: email,
+               password:              password,
+               password_confirmation: password,
+               admin: true)
 
-20.times do
-  Registration.create(user_id: User.all.sample.id, course_id: Course.all.sample.id)
+end
+# User.create!(name:  "Example User",
+#              email: "example@railstutorial.org",
+#              password:              "foobar",
+#              password_confirmation: "foobar",
+#              admin: true)
+
+50.times do
+  reg = Registration.create!(user_id: User.all.sample.id, course_id: Course.all.sample.id)
+  print "registration created:"
+  puts reg
 end
