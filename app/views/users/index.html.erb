@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>All Registration (<%= User.count %> users)</h1>
+<h1>All Users <span class="label label-success"><%= User.count %></span></h1>
 
 <%= will_paginate %>
 <table class = "table table-striped">
@@ -19,9 +19,8 @@
       <tr>
         <td><%= user.id %></td>
         <td><img class="img-circle" alt="Cinque Terre" <%= gravatar_for user, size: 50 %></td>
-        <td><strong><%= user.name %></strong></br>
+        <td><strong><%= user.name %></strong> <span class="badge"><%= user.registrations.count %></span> </br>
             <%= user.email %></br>
-            <p class = "text-danger"> Taking <%= user.registrations.count %> courses</p></td>
         <td>
           <!-- Database Count: <%= Registration.where(:user_id => user.id).count%> -->
           <% user.registrations.each do |r| %>

@@ -18,7 +18,9 @@
       <th>Code</th>
       <th>Name</th>
       <th>Description</th>  
-      <th></th>    
+      <% if !current_user.nil? %>
+        <th></th>
+      <% end %>    
       <!-- <th colspan="3"></th> -->
     </tr>
   </thead>
@@ -27,12 +29,13 @@
     <% @courses.each do |course| %>
       <tr>
         <% current_course = course.id %>
-        <td><%= @i %></td>
+        <td><%= course.id %></td>
         <td><%= course.code %></td>
         <td><%= course.name %></td>
         <td><%= course.description %></td>
-
-        <td><%=link_to "Enroll", course_enroll_path(course, user_id: current_user.id), method: :post %></td>
+        <% if !current_user.nil? %>
+          <td><%=link_to "Enroll", course_enroll_path(course, user_id: current_user.id), method: :post %></td>
+        <% end %>
       </tr>
     <% end %>
 

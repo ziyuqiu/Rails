@@ -11,19 +11,50 @@
 
 
 <div class="row">
-	<div class="link container">
-		</br>
-		<blockquote>
-		    <p>The best preparation for tomorrow is doing your best today.</p>
-		    <footer>H. Jackson Brown, Jr.</footer>
-		</blockquote>
+	<div class = "class profile">
+		<% if !current_user.nil? %>
+			<p id="notice"><%= notice %></p>
+			<div class="row">
+				<div class="row">
+				  <div class="col-md-4">
+				    <section class="user_info">
+				      <div class = "col-md-4">
+				        <img class="img-circle" alt="Cinque Terre" size="150" <%= gravatar_for current_user %>
+				      </div>
+				      <div class = "col-md-8">
+				        <h4><strong><%= current_user.name %></strong></h4>
+				          <p><%= current_user.email %></p>
+				          <p><%= link_to 'Edit', edit_user_path(current_user) %> |
+				          <%= link_to 'Delete', current_user, method: :delete, data: { confirm: "You sure?" } %></p>
+				        
+				      </div>
+				    </section>
+				  </div>
 
+				  <div class="col-md-8">
+				  	<strong><h4>Enrolled Courses <span class="label label-danger"><%= current_user.registrations.count %></span></h4></strong>
+					  <ul>
+					  <% current_user.registrations.each do |r| %>
+					    <li><%= Course.find(r.course_id).code  %> | 
+					        <%= Course.find(r.course_id).name  %></li>
+					  <% end %>
+					  </ul>
+				  </div>
+				</div>
+			</div>
+		<% else %>
+			<center><button class="btn btn-primary"><%= link_to "Sign in", login_path %></button></center>
+			<center><p class="text-primary">New user? <%= link_to "Sign up now!", signup_path %></p></center>
+		<% end %>
+	</div>
+	<div class = "link container">
+		</br>
 		<h3>Links:</h3>
 		<p class="text-muted"><strong>Link to private GitHub repo:</strong> <a href="https://github.com/ziyuqiu/Rails">https://github.com/ziyuqiu/Rails</a></br></p>
 		<p class="text-primary"><strong>Link to Heroku:</strong> <a href="https://course-catalog-ziyuqiu.herokuapp.com/">https://course-catalog-ziyuqiu.herokuapp.com/</a></br></p>
 
 		<h3>For PA Rails1:</h3>
-		<p class="text-success"><strong>Home page:</strong><a href="https://course-catalog-ziyuqiu.herokuapp.com/">https://course-catalog-ziyuqiu.herokuapp.com/</a></br>(Please disregard the signin button since it is not actually doing anything)</p>
+		<p class="text-success"><strong>Home page:</strong><a href="https://course-catalog-ziyuqiu.herokuapp.com/">https://course-catalog-ziyuqiu.herokuapp.com/</a></br></p>
 			
 		<p class="text-info"><strong>Table of Instructors: </strong> <a href="https://course-catalog-ziyuqiu.herokuapp.com/instructors">https://course-catalog-ziyuqiu.herokuapp.com/instructors</a></br></p>
 		<p class="text-warning"><strong>Table of Subjects: </strong> <a href="https://course-catalog-ziyuqiu.herokuapp.com/subjects">https://course-catalog-ziyuqiu.herokuapp.com/subjects</a></br></p>
@@ -35,9 +66,6 @@
 
 	</div>
 	<div class="col-md-12">
-		</br>
-		<center><%= link_to "Sign in", login_path, class: "btn btn-default" %></center>
-		</br>
 		<center><%= image_tag("castle.png", :alt => "img missing", :size => "600x400", :crop => :fit) %></center>
 	</div>
 </div>
