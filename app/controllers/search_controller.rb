@@ -5,14 +5,13 @@ class SearchController < ApplicationController
   # GET /courses.json
   def index
     if params[:search]
-      @courses = Course.search(params[:search]).order("created_at DESC")
+      @courses = Course.search(params[:search]).paginate(:page => params[:page], :per_page => 30)
       respond_to do |format|
         format.html # search.html.erb
         format.json { render json: search_path }
       end
     else
-      @courses = Course.all.order("created_at DESC")
-    @courses = @courses.paginate(:page => params[:page], :per_page => 30)
+      @courses = Course.all.paginate(:page => params[:page], :per_page => 30)
   end
 
 

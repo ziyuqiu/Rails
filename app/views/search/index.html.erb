@@ -28,7 +28,8 @@
     <h4>There are <mark><%= @courses.count %></mark> courses in total. </h4>
   <% end %>
 
-  <table class = "table table-bordered table-striped">
+  <%= will_paginate @courses %> 
+  <table class = "table table-bordered table-striped", remote:ture>
     <thead>
       <tr>
         <th>ID</th>
@@ -43,19 +44,7 @@
     </thead>
 
     <tbody>
-      <% @courses.each do |course| %>
-        <tr>
-          <% current_course = course.id %>
-          <td><%= course.id %></td>
-          <td><%= course.code %></td>
-          <td><%= course.name %></td>
-          <td><%= course.description %></td>
-          <% if !current_user.nil? %>
-            <td><%=link_to "Enroll", course_enroll_path(course, user_id: current_user.id), method: :post %></td>
-          <% end %>
-        </tr>
-      <% end %>
-
+      <%= render "index" %>
     </tbody>
   </table>
 
