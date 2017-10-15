@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @course.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @course.description %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @course.code %>
+</p>
+
+<strong><h3>Enrolled Students (<%= @course.registrations.count %>)</h3></strong>
+  <ul>
+  <% @course.registrations.each do |r| %>
+    <li><%= User.find(r.user_id).name  %></li></br>
+  <% end %>
+  </ul>
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>

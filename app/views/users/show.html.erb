@@ -28,7 +28,9 @@
     <ul>
     <% @user.registrations.each do |r| %>
       <li><%= Course.find(r.course_id).code  %> | 
-          <%= Course.find(r.course_id).name  %></li>
+          <%= Course.find(r.course_id).name  %>
+          <%= link_to 'Unenroll', r, method: :delete, data: { confirm: "You sure to unenroll from this class?" } %>
+          </li>
     <% end %>
     </ul>
   </div>

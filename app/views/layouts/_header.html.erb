@@ -16,19 +16,12 @@
         <li><%= link_to "Subjects", subjects_url %></li>
         <li><%= link_to "Courses", courses_url %></li>
         <li><%= link_to "Users", users_url %></li>
+        <li><%= link_to "Search", '/search' %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <form class="navbar-form navbar-left">
-
-<!--            <div class="input-group">
-            <%= form_tag(courses_path, method: :get, :authenticity_token => false, id: "search-form") do %>
-              <%= text_field_tag :search, params[:search], placeholder: "Search Courses" %>
-              <%= submit_tag "Search"%>
-            <% end %>
-          </div> -->
-
+        <!-- <form class="navbar-form navbar-left">
           <div class="input-group">
-            <form action="/courses" accept-charset="UTF-8" method="get">
+            <form action="/search" accept-charset="UTF-8" method="get">
               <input name="utf8" type="hidden" value="&#x2713;" />
               <input type="text" class="form-control" placeholder="Search" name="search" id="search" />
               <div class="input-group-btn">
@@ -38,8 +31,7 @@
               </div>
             </form>
           </div>
-
-        </form>
+        </form> -->
         <% if logged_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">

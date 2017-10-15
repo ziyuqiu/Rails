@@ -1,10 +1,21 @@
-class CoursesController < ApplicationController
+class SearchController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all.paginate(:page => params[:page], :per_page => 30)
+    if params[:search]
+      @courses = Course.search(params[:search]).order("created_at DESC")
+      respond_to do |format|
+        format.html # search.html.erb
+        format.json { render json: search_path }
+      end
+    else
+      @courses = Course.all.order("created_at DESC")
+    @courses = @courses.paginate(:page => params[:page], :per_page => 30)
+  end
+
+
   end
 
   # GET /courses/1

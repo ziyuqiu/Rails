@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Search</h1>
+<div class="row">
+  <form class="navbar-form navbar-left">
+    <div class="input-group">
+      <form action="/search" accept-charset="UTF-8" method="get">
+        <div class="col-md-8">
+          <input name="utf8" type="hidden" value="&#x2713;" />
+          <input type="text" class="form-control" placeholder="Search" name="search" id="search" />
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-default" type="submit" />
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </form>
+</div>
+</br>
+<div class="row">
+  <% if @courses.blank? %>
+    <h4>There are no courses containing the term <mark><%= params[:search] %></mark>.</h4>
+  <% elsif !params[:search].blank? %>
+    <h4>There are <mark><%= @courses.count %> results that matches <mark><%= params[:search].upcase %></mark>.</h4>
+  <% else %>
+    <h4>There are <mark><%= @courses.count %></mark> courses in total. </h4>
+  <% end %>
+
+  <table class = "table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Description</th>  
+        <% if !current_user.nil? %>
+          <th></th>
+        <% end %>    
+        <!-- <th colspan="3"></th> -->
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @courses.each do |course| %>
+        <tr>
+          <% current_course = course.id %>
+          <td><%= course.id %></td>
+          <td><%= course.code %></td>
+          <td><%= course.name %></td>
+          <td><%= course.description %></td>
+          <% if !current_user.nil? %>
+            <td><%=link_to "Enroll", course_enroll_path(course, user_id: current_user.id), method: :post %></td>
+          <% end %>
+        </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+
+  </br>
+</div>
+
+
+
+<button type="button" class="btn btn-default"><%= link_to 'New Course', new_course_path %></button>

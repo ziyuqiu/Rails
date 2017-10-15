@@ -36,14 +36,17 @@
 					  <ul>
 					  <% current_user.registrations.each do |r| %>
 					    <li><%= Course.find(r.course_id).code  %> | 
-					        <%= Course.find(r.course_id).name  %></li>
+					        <%= Course.find(r.course_id).name  %>
+					        <%= link_to 'Unenroll', r, method: :delete, data: { confirm: "You sure to unenroll from this class?" } %>
+					        </li>
 					  <% end %>
 					  </ul>
 				  </div>
 				</div>
 			</div>
 		<% else %>
-			<center><button class="btn btn-primary"><%= link_to "Sign in", login_path %></button></center>
+			<div class="alert alert-danger">Please <strong>sign in </strong>to view more.</div>
+			<center><button type="button" class="btn btn-primary btn-block"><%= link_to "Sign in", login_path %></button></center>
 			<center><p class="text-primary">New user? <%= link_to "Sign up now!", signup_path %></p></center>
 		<% end %>
 	</div>
