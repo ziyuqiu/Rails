@@ -37,7 +37,7 @@
 					  <% current_user.registrations.each do |r| %>
 					    <li><%= Course.find(r.course_id).code  %> | 
 					        <%= Course.find(r.course_id).name  %>
-					        <%= link_to 'Unenroll', r, method: :delete, data: { confirm: "You sure to unenroll from this class?" } %>
+					        <%= link_to 'Unenroll', r, method: :delete, data: { confirm: "You sure to unenroll from this class?" }, class: "btn btn-link" %>
 					        </li>
 					  <% end %>
 					  </ul>
@@ -56,17 +56,6 @@
 		<h3>Links:</h3>
 		<p class="text-muted"><strong>Link to private GitHub repo:</strong> <a href="https://github.com/ziyuqiu/Rails">https://github.com/ziyuqiu/Rails</a></br></p>
 		<p class="text-primary"><strong>Link to Heroku:</strong> <a href="https://course-catalog-ziyuqiu.herokuapp.com/">https://course-catalog-ziyuqiu.herokuapp.com/</a></br></p>
-
-		<h3>For PA Rails1:</h3>
-		<p class="text-success"><strong>Home page:</strong><a href="https://course-catalog-ziyuqiu.herokuapp.com/">https://course-catalog-ziyuqiu.herokuapp.com/</a></br></p>
-			
-		<p class="text-info"><strong>Table of Instructors: </strong> <a href="https://course-catalog-ziyuqiu.herokuapp.com/instructors">https://course-catalog-ziyuqiu.herokuapp.com/instructors</a></br></p>
-		<p class="text-warning"><strong>Table of Subjects: </strong> <a href="https://course-catalog-ziyuqiu.herokuapp.com/subjects">https://course-catalog-ziyuqiu.herokuapp.com/subjects</a></br></p>
-		<p class="text-danger"><strong>Table of Courses: </strong> <a href="https://course-catalog-ziyuqiu.herokuapp.com/courses">https://course-catalog-ziyuqiu.herokuapp.com/courses</a></br></p>
-
-		<h3>For PA Rails2:</h3>
-		<p class="text-success"><strong>Registration List: </strong> <a href="https://course-catalog-ziyuqiu.herokuapp.com/users">https://course-catalog-ziyuqiu.herokuapp.com/users</a></br></p>
-
 
 	</div>
 	<div class="col-md-12">

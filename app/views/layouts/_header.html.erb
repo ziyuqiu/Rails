@@ -19,7 +19,7 @@
         <li><%= link_to "Search", '/search' %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <!-- <form class="navbar-form navbar-left">
+        <form class="navbar-form navbar-left" action="/search">
           <div class="input-group">
             <form action="/search" accept-charset="UTF-8" method="get">
               <input name="utf8" type="hidden" value="&#x2713;" />
@@ -31,7 +31,7 @@
               </div>
             </form>
           </div>
-        </form> -->
+        </form>
         <% if logged_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
