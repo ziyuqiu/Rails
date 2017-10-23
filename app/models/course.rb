@@ -5,6 +5,6 @@ class Course < ApplicationRecord
 							 dependent: :destroy
 
 	def self.search(search)
-	  where("name LIKE ? OR description LIKE ? OR code LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%") 
+	  where("lower(name) LIKE ? OR lower(description) LIKE ? OR lower(code) LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%") 
 	end
 end
