@@ -8,6 +8,7 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th>Subject</th>
       <th>Code</th>
       <th>Name</th>
       <th>Description</th>  
@@ -23,6 +24,12 @@
       <tr>
         <% current_course = course.id %>
         <td><%= course.id %></td>
+        <td>
+          <% if course.academics.present? %>
+            <% course.academics.each do |a| %>
+              <%= (Subject.find_by num: a.subject_num).name %></br>
+            <% end %>
+          <% end %></td>
         <td><%= course.code %></td>
         <td><%= course.name %></td>
         <td><%= course.description %></td>

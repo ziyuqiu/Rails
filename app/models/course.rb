@@ -1,4 +1,6 @@
 class Course < ApplicationRecord
+	has_many :subjects, through: :academic
+	has_many :academics
 	has_many :users, through: :registrations
 	has_many :registrations, class_name: "Registration",
 							 foreign_key: "course_id",
@@ -7,4 +9,5 @@ class Course < ApplicationRecord
 	def self.search(search)
 	  where("lower(name) LIKE ? OR lower(description) LIKE ? OR lower(code) LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%") 
 	end
+
 end

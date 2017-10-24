@@ -12,7 +12,7 @@ class SearchController < ApplicationController
     #     format.js
     #   end
     # else
-      @courses = Course.all.paginate(:page => params[:page], :per_page => 30)
+    @courses = Course.all.paginate(:page => params[:page], :per_page => 30)
     # end
   end
 

@@ -6,13 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-course_file = File.read("#{Rails.root}/db/data/course.json")
-course_list = JSON.parse(course_file)
-if (Course.count==0)
-  course_list.each do |x|
-    Course.create({:name=>x["name"], :description=>x["description"],:code=>x["code"]})
-  end
-end
+# JSON.parse(File.read("#{Rails.root}/db/data/course.json"))[0]
+#   print(x["id"])
+# end
+
+# course_file = File.read("#{Rails.root}/db/data/course.json")
+# course_list = JSON.parse(course_file)
+# if (Course.count==0)
+#   course_list.each do |x|
+#     c = Course.create({:name=>x["name"], :description=>x["description"],:code=>x["code"]})
+#     x["subjects"].each do |y|
+#       Academic.create!(:course_id => c["id"], :subject_num => y["id"])
+#   end
+# end
 
 
 instructor_file = File.read("#{Rails.root}/db/data/instructor.json")
@@ -29,7 +35,8 @@ if (Subject.count==0)
   subject_list.each do |x|
     x.delete("segments")
     print(x)
-    Subject.create({:name=>x["name"], :abbreviation=>x["abbreviation"]})
+    # Subject.create(x)
+    Subject.create({:name=>x["name"], :abbreviation=>x["abbreviation"], :num=>x["id"]})
   end
 end
 
@@ -51,8 +58,8 @@ end
 #              password_confirmation: "foobar",
 #              admin: true)
 
-50.times do
-  reg = Registration.create!(user_id: User.all.sample.id, course_id: Course.all.sample.id)
-  print "registration created:"
-  puts reg
-end
+# 50.times do
+#   reg = Registration.create!(user_id: User.all.sample.id, course_id: Course.all.sample.id)
+#   print "registration created:"
+#   puts reg
+# end
