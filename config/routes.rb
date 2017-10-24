@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get '/search', to:'search#index'
-  get '/course/search', to:'search#index'
+  post '/search', to:'search#search'
 
   get 'sessions/new'
   get  '/signup', to: 'users#new'
