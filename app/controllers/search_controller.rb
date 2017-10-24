@@ -1,6 +1,10 @@
 class SearchController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
+  def new
+    @search = Search.new
+    
+  end
   # GET /courses
   # GET /courses.json
   def index
@@ -12,6 +16,7 @@ class SearchController < ApplicationController
     #     format.js
     #   end
     # else
+    @subjects = Subject.all
     @courses = Course.all.paginate(:page => params[:page], :per_page => 30)
     # end
   end

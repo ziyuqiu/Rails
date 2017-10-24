@@ -2,10 +2,21 @@
 
 <h1>Search</h1>
 
+  <select id="sub-filter">
+    <option value="">----Please Select Subject----</option>
+    <% @subjects.each do |sub| %>
+      <option value= <%= sub.name %>> <%= sub.name %></option>
+    <% end %>
+  </select>
+
+</br>
+
+</br>
+
   <div class="input-group">
     <%= form_tag(search_path, method: :post, id: "search-form", remote: true) do %>
       <%= text_field_tag :phrase, params[:phrase], placeholder: "Search", id:"phrase" %>
-      <!-- <%= submit_tag "Search"%> -->
+      <%= submit_tag "Search"%>
     <% end %>
   </div>
 
@@ -17,9 +28,6 @@
   </div>
   
   </br>
-
-
-
 
 <button type="button" class="btn btn-default"><%= link_to 'New Course', new_course_path %></button>
 

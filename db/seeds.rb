@@ -6,19 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# JSON.parse(File.read("#{Rails.root}/db/data/course.json"))[0]
-#   print(x["id"])
-# end
 
-# course_file = File.read("#{Rails.root}/db/data/course.json")
-# course_list = JSON.parse(course_file)
-# if (Course.count==0)
-#   course_list.each do |x|
-#     c = Course.create({:name=>x["name"], :description=>x["description"],:code=>x["code"]})
-#     x["subjects"].each do |y|
-#       Academic.create!(:course_id => c["id"], :subject_num => y["id"])
-#   end
-# end
+course_file = File.read("#{Rails.root}/db/data/course.json")
+course_list = JSON.parse(course_file)
+if (Course.count==0)
+  course_list.each do |x|
+    c = Course.create({:name=>x["name"], :description=>x["description"],:code=>x["code"]})
+    x["subjects"].each do |y|
+      Academic.create!(:course_id => c["id"], :subject_num => y["id"])
+  end
+end
 
 
 instructor_file = File.read("#{Rails.root}/db/data/instructor.json")

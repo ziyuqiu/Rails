@@ -4,16 +4,6 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    course_file = File.read("#{Rails.root}/db/data/course.json")
-    course_list = JSON.parse(course_file)
-    if (Course.count==0)
-      course_list.each do |x|
-        c = Course.create({:name=>x["name"], :description=>x["description"],:code=>x["code"]})
-        x["subjects"].each do |y|
-          Academic.create!(:course_id => c["id"], :subject_num => y["id"])
-        end
-      end
-    end
     @courses = Course.all.paginate(:page => params[:page], :per_page => 30)
   end
 
