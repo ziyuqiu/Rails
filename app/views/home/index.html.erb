@@ -1,15 +1,3 @@
-<!-- <h1>User registered</h1>
-<% @users.each do |u| %>
-	<Strong>User: </Strong> 
-	<%= u.name %> 
-	is enrolled in: 
-	<%= User.find(1).registrations.each do |r| %>
-		<% Course.find(r.course_id).name  %>
-	<% end %> 
-<% end %>
- -->
-
-
 <div class="row">
 	<div class = "class profile">
 		<% if !current_user.nil? %>
