@@ -31,7 +31,7 @@
 
 <button type="button" class="btn btn-default"><%= link_to 'New Course', new_course_path %></button>
 
-<script>
+<script data-turbolinks-eval=false>
   $('#phrase').on('keyup', ajaxSubmitSearchForm);
   $('#sub-filter').on('change',ajaxSubmitSearchForm);
   $('#search-form').on('submit', function(e) {

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/search', to:'search#index'
   post '/search', to:'search#search'
+  get '/relax', to:'pages#kill_time'
 
   get 'sessions/new'
   get  '/signup', to: 'users#new'
