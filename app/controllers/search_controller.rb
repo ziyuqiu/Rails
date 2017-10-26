@@ -22,7 +22,10 @@ class SearchController < ApplicationController
   end
 
   def search
-    @courses = Course.search(params["phrase"].downcase).paginate(:page => params[:page], :per_page => 30)
+    @courses = Course.where(id: Academic.where(subject_num: params["filter"]).map{|a| a.course_id})
+    @courses = @courses.search(params["phrase"].downcase).paginate(:page => params[:page], :per_page => 30)
+   
+    
     respond_to do |format|
       format.js {
         render json: { 

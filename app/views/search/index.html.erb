@@ -2,18 +2,19 @@
 
 <h1>Search</h1>
 
-  <select id="sub-filter">
-    <option value="">----Please Select Subject----</option>
-    <% @subjects.each do |sub| %>
-      <option value= <%= sub.name %>> <%= sub.name %></option>
-    <% end %>
-  </select>
+  
 
 </br>
 </br>
 
   <div class="input-group">
     <%= form_tag(search_path, method: :post, id: "search-form", remote: true) do %>
+      <select id="sub-filter" name="filter">
+        <option value="">----Please Select Subject----</option>
+        <% @subjects.each do |sub| %>
+          <option value= <%= sub.num %>> <%= sub.name %></option>
+        <% end %>
+      </select>
       <%= text_field_tag :phrase, params[:phrase], placeholder: "Search", id:"phrase" %>
       <%= submit_tag "Search"%>
     <% end %>
@@ -32,11 +33,13 @@
 
 <script>
   $('#phrase').on('keyup', ajaxSubmitSearchForm);
+  $('#sub-filter').on('change',ajaxSubmitSearchForm);
   $('#search-form').on('submit', function(e) {
     e.preventDefault();
     ajaxSubmitSearchForm();
   })    
   function ajaxSubmitSearchForm(){
+    console.log($('#search-form').serialize())
     $.ajax({
       url: $('#search-form').attr('action'),
       type: 'POST',
