@@ -22,7 +22,11 @@ class SearchController < ApplicationController
   end
 
   def search
-    @courses = Course.where(id: Academic.where(subject_num: params["filter"]).map{|a| a.course_id})
+    if params["filter"]==""
+      @courses = Course.all
+    else
+      @courses = Course.where(id: Academic.where(subject_num: params["filter"]).map{|a| a.course_id})
+    end
     @courses = @courses.search(params["phrase"].downcase).paginate(:page => params[:page], :per_page => 30)
    
     
