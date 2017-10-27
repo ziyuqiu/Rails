@@ -1,4 +1,5 @@
-
+$( document ).ready(function() {
+  ajaxSubmitSearchForm();
   $('#phrase').on('keyup', ajaxSubmitSearchForm);
   $('#sub-filter').on('change',ajaxSubmitSearchForm);
   $('#search-form').on('submit', function(e) {
@@ -21,3 +22,4 @@
       }
     });
   }
+})
