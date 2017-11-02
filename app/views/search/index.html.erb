@@ -1,12 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<% if !current_user.nil? %>
 <h1>Search</h1>
 
-  
-
 </br>
-</br>
-
   <div class="input-group">
     <%= form_tag(search_path, method: :post, id: "search-form", remote: true) do %>
 
@@ -32,6 +28,10 @@
 
 <button type="button" class="btn btn-default"><%= link_to 'New Course', new_course_path %></button>
 
+<% else %>
+  <div class="alert alert-danger">Please <strong>sign in </strong>to view more.</div>
+  <%= render file: 'sessions/new' %>
+<% end %>
 <%= javascript_include_tag 'search_ajax' %>
 <!-- <script>
   $('#phrase').on('keyup', ajaxSubmitSearchForm);
